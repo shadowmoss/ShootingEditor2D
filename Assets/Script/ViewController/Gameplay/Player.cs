@@ -8,6 +8,8 @@ namespace ShootingEditor2D {
 
         private Trigger2DCheck mGroundCheck;
 
+        private Gun mGun;
+
         [SerializeField]
         public int speed = 5;
 
@@ -16,12 +18,17 @@ namespace ShootingEditor2D {
             mRigidbody2D = GetComponent<Rigidbody2D>();
 
             mGroundCheck = transform.Find("GroundCheck").GetComponent<Trigger2DCheck>();
+
+            mGun = transform.Find("Gun").GetComponent<Gun>();
         }
         private bool mJumpPressed;
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.K)) { 
                 mJumpPressed = true;
+            }
+            if (Input.GetKeyDown(KeyCode.J)) {
+                mGun.Shoot();
             }
         }
         private void FixedUpdate()
