@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 namespace ShootingEditor2D {
     public class UIGamePass : MonoBehaviour
     {
@@ -36,8 +37,8 @@ namespace ShootingEditor2D {
             Vector2 buttonSize = new Vector2(buttonWidth,buttonHeight);
             Rect buttonRect = new Rect(buttonPosition, buttonSize);
 
-            if (GUI.Button(buttonRect, "回到首页", mButtonStyle.Value)) { 
-                // SceneManager.LoadScene("GameStart");
+            if (GUI.Button(buttonRect, "回到首页", mButtonStyle.Value)) {
+                SceneManager.LoadScene("GameStart");
             }
         }
     }

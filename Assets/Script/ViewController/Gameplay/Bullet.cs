@@ -11,11 +11,13 @@ namespace ShootingEditor2D {
         private void Awake()
         {
             mRigidbody2D = GetComponent<Rigidbody2D>();
+
+            Destroy(gameObject,5);
         }
 
         private void Start()
         {
-            mRigidbody2D.velocity = Vector2.right * 10;
+            mRigidbody2D.velocity = Vector2.right * 10 * Mathf.Sign(transform.localScale.x);
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -23,6 +25,8 @@ namespace ShootingEditor2D {
                 // 发送一个击杀指令
                 this.SendCommand<KillEnemyCommand>();
                 Destroy(collision.gameObject);
+
+                Destroy(gameObject);
             }
         }
 
