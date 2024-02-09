@@ -7,7 +7,7 @@ namespace FrameworkDesign
 {
     // 一个用于数据绑定的专用泛型类.
     // 数据+数据变更事件的集合体。
-    public class BindableProperty<T> where T :IEquatable<T>
+    public class BindableProperty<T>
     {
         private T mValue;
 
@@ -16,7 +16,7 @@ namespace FrameworkDesign
             get => mValue;
             set
             {
-                if(!mValue.Equals(value))
+                if(mValue == null||!mValue.Equals(value))
                 {
                     mValue = value;
                     mOnValueChanged?.Invoke(value);

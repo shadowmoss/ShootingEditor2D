@@ -7,7 +7,15 @@ namespace ShootingEditor2D {
     {
         protected override void OnExecute()
         {
-            this.GetSystem<IGunSystem>().CurrentGun.BulletCount.Value--;
+            IGunSystem gunSystem = this.GetSystem<IGunSystem>();
+            gunSystem.CurrentGun.BulletCountInGun.Value--;
+            gunSystem.CurrentGun.State.Value = GunState.Shooting;
+
+            var timeSystem = this.GetSystem<ITimeSystem>();
+            timeSystem.AddDelayTask(0.33f, () =>
+            {
+                gunSystem.CurrentGun.State.Value = GunState.Idle;
+            });
         }
     }
 

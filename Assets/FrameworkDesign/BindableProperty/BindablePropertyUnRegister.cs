@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrameworkDesign
 {
-    public class BindablePropertyUnRegister<T> : IUnRegister where T:IEquatable<T>
+    public class BindablePropertyUnRegister<T> : IUnRegister
     {
         public BindableProperty<T> BindableProperty { get; set; }
 
